@@ -7,20 +7,24 @@ service EshopService {
     rpc GetAllProducts (Empty) returns (Products);
     rpc GetAllCategories (Empty) returns (Categories);
 
-    rpc GetProduct (Product) returns (Product);
-    rpc GetCategory (Category) returns (Category);
+    rpc GetProduct (ID) returns (Product);
+    rpc GetCategory (ID) returns (Category);
 
     rpc EditProduct (Product) returns (Product);
     rpc EditCategory (Category) returns (Category);
 
-    rpc DeleteProduct (Product) returns (Empty);
-    rpc DeleteCategory (Category) returns (Empty);
+    rpc DeleteProduct (ID) returns (Empty);
+    rpc DeleteCategory (ID) returns (Empty);
 
-    rpc DetProductsByCategory (Category) returns (AllProductsOfCategory);
+    rpc GetProductsOfCategory (ID) returns (AllProductsOfCategory);
 
 }
 
 message Empty {}
+
+message ID {
+    int32 id = 1;
+}
 
 message Product {
     int32 id = 1;

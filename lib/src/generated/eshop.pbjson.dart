@@ -15,6 +15,16 @@ const Empty$json = const {
 
 /// Descriptor for `Empty`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List emptyDescriptor = $convert.base64Decode('CgVFbXB0eQ==');
+@$core.Deprecated('Use iDDescriptor instead')
+const ID$json = const {
+  '1': 'ID',
+  '2': const [
+    const {'1': 'id', '3': 1, '4': 1, '5': 5, '10': 'id'},
+  ],
+};
+
+/// Descriptor for `ID`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List iDDescriptor = $convert.base64Decode('CgJJRBIOCgJpZBgBIAEoBVICaWQ=');
 @$core.Deprecated('Use productDescriptor instead')
 const Product$json = const {
   '1': 'Product',
