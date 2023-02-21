@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+service EshopService {
+    rpc CreateProduct (Product) returns (Product) {}
+    rpc CreateCategory (Category) returns (Category);
+
+    rpc GetAllProducts (Empty) returns (Products);
+    rpc GetAllCategories (Empty) returns (Categories);
+
+    rpc GetProduct (Product) returns (Product);
+    rpc GetCategory (Category) returns (Category);
+
+    rpc EditProduct (Product) returns (Product);
+    rpc EditCategory (Category) returns (Category);
+
+    rpc DeleteProduct (Product) returns (Empty);
+    rpc DeleteCategory (Category) returns (Empty);
+
+    rpc DetProductsByCategory (Category) returns (AllProductsOfCategory);
+
+}
+
+message Empty {}
+
+message Product {
+    int32 id = 1;
+    string name = 2;
+    int32 category_id = 3;
+}
+
+message Category {
+    int32 id = 1;
+    string name = 2;
+}
+
+message Products {
+    repeated Product products = 1;
+}
+
+message Categories {
+    repeated Category categories = 1;
+}
+
+message AllProductsOfCategory {
+    int32 category_id = 3;
+    repeated Product products = 1;
+}
