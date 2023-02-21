@@ -68,14 +68,3 @@ const Categories$json = const {
 
 /// Descriptor for `Categories`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List categoriesDescriptor = $convert.base64Decode('CgpDYXRlZ29yaWVzEikKCmNhdGVnb3JpZXMYASADKAsyCS5DYXRlZ29yeVIKY2F0ZWdvcmllcw==');
-@$core.Deprecated('Use allProductsOfCategoryDescriptor instead')
-const AllProductsOfCategory$json = const {
-  '1': 'AllProductsOfCategory',
-  '2': const [
-    const {'1': 'category_id', '3': 3, '4': 1, '5': 5, '10': 'categoryId'},
-    const {'1': 'products', '3': 1, '4': 3, '5': 11, '6': '.Product', '10': 'products'},
-  ],
-};
-
-/// Descriptor for `AllProductsOfCategory`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List allProductsOfCategoryDescriptor = $convert.base64Decode('ChVBbGxQcm9kdWN0c09mQ2F0ZWdvcnkSHwoLY2F0ZWdvcnlfaWQYAyABKAVSCmNhdGVnb3J5SWQSJAoIcHJvZHVjdHMYASADKAsyCC5Qcm9kdWN0Ughwcm9kdWN0cw==');

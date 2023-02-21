@@ -54,12 +54,10 @@ class EshopServiceClient extends $grpc.Client {
       '/EshopService/DeleteCategory',
       ($0.ID value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.Empty.fromBuffer(value));
-  static final _$getProductsOfCategory =
-      $grpc.ClientMethod<$0.ID, $0.AllProductsOfCategory>(
-          '/EshopService/GetProductsOfCategory',
-          ($0.ID value) => value.writeToBuffer(),
-          ($core.List<$core.int> value) =>
-              $0.AllProductsOfCategory.fromBuffer(value));
+  static final _$getProductsOfCategory = $grpc.ClientMethod<$0.ID, $0.Products>(
+      '/EshopService/GetProductsOfCategory',
+      ($0.ID value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $0.Products.fromBuffer(value));
 
   EshopServiceClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -116,8 +114,7 @@ class EshopServiceClient extends $grpc.Client {
     return $createUnaryCall(_$deleteCategory, request, options: options);
   }
 
-  $grpc.ResponseFuture<$0.AllProductsOfCategory> getProductsOfCategory(
-      $0.ID request,
+  $grpc.ResponseFuture<$0.Products> getProductsOfCategory($0.ID request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getProductsOfCategory, request, options: options);
   }
@@ -197,13 +194,13 @@ abstract class EshopServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.ID.fromBuffer(value),
         ($0.Empty value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$0.ID, $0.AllProductsOfCategory>(
+    $addMethod($grpc.ServiceMethod<$0.ID, $0.Products>(
         'GetProductsOfCategory',
         getProductsOfCategory_Pre,
         false,
         false,
         ($core.List<$core.int> value) => $0.ID.fromBuffer(value),
-        ($0.AllProductsOfCategory value) => value.writeToBuffer()));
+        ($0.Products value) => value.writeToBuffer()));
   }
 
   $async.Future<$0.Product> createProduct_Pre(
@@ -256,7 +253,7 @@ abstract class EshopServiceBase extends $grpc.Service {
     return deleteCategory(call, await request);
   }
 
-  $async.Future<$0.AllProductsOfCategory> getProductsOfCategory_Pre(
+  $async.Future<$0.Products> getProductsOfCategory_Pre(
       $grpc.ServiceCall call, $async.Future<$0.ID> request) async {
     return getProductsOfCategory(call, await request);
   }
@@ -277,6 +274,6 @@ abstract class EshopServiceBase extends $grpc.Service {
       $grpc.ServiceCall call, $0.Category request);
   $async.Future<$0.Empty> deleteProduct($grpc.ServiceCall call, $0.ID request);
   $async.Future<$0.Empty> deleteCategory($grpc.ServiceCall call, $0.ID request);
-  $async.Future<$0.AllProductsOfCategory> getProductsOfCategory(
+  $async.Future<$0.Products> getProductsOfCategory(
       $grpc.ServiceCall call, $0.ID request);
 }

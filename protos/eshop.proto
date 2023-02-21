@@ -16,7 +16,7 @@ service EshopService {
     rpc DeleteProduct (ID) returns (Empty);
     rpc DeleteCategory (ID) returns (Empty);
 
-    rpc GetProductsOfCategory (ID) returns (AllProductsOfCategory);
+    rpc GetProductsOfCategory (ID) returns (Products);
 
 }
 
@@ -45,7 +45,4 @@ message Categories {
     repeated Category categories = 1;
 }
 
-message AllProductsOfCategory {
-    int32 category_id = 3;
-    repeated Product products = 1;
-}
+
