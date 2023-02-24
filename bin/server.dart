@@ -1,3 +1,4 @@
+import 'package:dart_grpc_api/src/database/database.dart';
 import 'package:dart_grpc_api/src/generated/eshop.pbgrpc.dart';
 import 'package:dart_grpc_api/src/services/category_service.dart';
 import 'package:dart_grpc_api/src/services/item_service.dart';
@@ -66,7 +67,7 @@ class EshopService extends EshopServiceBase {
 
 Future<void> main(List<String> args) async {
   final server = grpc.Server([EshopService()]);
-
+  await EshopDatabase.createDatabase();
   await server.serve(port: 50000);
-  print('✅ Server listening on port ${server.port}...');
+  print('Server listening on port ${server.port}...');
 }
