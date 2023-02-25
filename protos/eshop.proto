@@ -33,7 +33,7 @@ message Product {
 }
 
 message Category {
-    int32 id = 1;
+   optional int32 id = 1;
     string name = 2;
 }
 

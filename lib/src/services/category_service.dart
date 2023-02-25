@@ -1,8 +1,9 @@
+import 'package:dart_grpc_api/src/database/database.dart';
 import 'package:dart_grpc_api/src/generated/eshop.pb.dart';
 
 class CategoryService {
-  Category createCategory(Category category) {
-    return Category(id: 1, name: 'category');
+  Future<Category> createCategory(Category category) async {
+    return await EshopDatabase.addCategory(category);
   }
 
   Empty deleteCategory(int categoryId) {
@@ -13,8 +14,8 @@ class CategoryService {
     return category;
   }
 
-  Categories getAllCategories() {
-    return Categories(categories: [Category(id: 1, name: 'cat')]);
+  Future<Categories> getAllCategories() async {
+    return Categories(categories: await EshopDatabase.getAllCategories());
   }
 
   Category getCategory(int categoryId) {
