@@ -17,10 +17,20 @@ service EshopService {
     rpc DeleteCategory (ID) returns (Empty);
 
     rpc GetProductsOfCategory (ID) returns (Products);
+    rpc UploadImages (stream ImageToUpload) returns (ImageLinks);
 
 }
 
 message Empty {}
+
+
+message ImageToUpload {
+    bytes image = 1;
+    string name = 2;
+}
+message ImageLinks {
+     string image_links = 1;
+}
 
 message ID {
     int32 id = 1;
@@ -33,8 +43,9 @@ message Product {
 }
 
 message Category {
-   optional int32 id = 1;
+    optional int32 id = 1;
     string name = 2;
+    optional string image_link = 3;
 }
 
 message Products {

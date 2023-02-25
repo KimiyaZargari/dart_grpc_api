@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dart_grpc_api/src/database/database.dart';
 import 'package:dart_grpc_api/src/generated/eshop.pbgrpc.dart';
 import 'package:dart_grpc_api/src/services/category_service.dart';
@@ -62,6 +64,27 @@ class EshopService extends EshopServiceBase {
   @override
   Future<Product> getProduct(ServiceCall call, ID request) async {
     return productService.getProduct(request.id);
+  }
+
+  @override
+  Future<ImageLinks> uploadImages(
+      grpc.ServiceCall call, Stream<ImageToUpload> request) async {
+    final List<int> image = [];
+    String? name;
+    await for (var element in request) {
+      if (element.name.isNotEmpty) {
+        name = element.name;
+      }
+      image.addAll(element.image);
+    }
+
+    File imageFile = File(name ?? 'image');
+    await imageFile.writeAsBytes(image);
+
+    //   // links.add(filePath);
+    // });
+    //
+    return ImageLinks(imageLinks: name);
   }
 }
 

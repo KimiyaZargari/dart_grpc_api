@@ -38,6 +38,114 @@ class Empty extends $pb.GeneratedMessage {
   static Empty? _defaultInstance;
 }
 
+class ImageToUpload extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ImageToUpload', createEmptyInstance: create)
+    ..a<$core.List<$core.int>>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'image', $pb.PbFieldType.OY)
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'name')
+    ..hasRequiredFields = false
+  ;
+
+  ImageToUpload._() : super();
+  factory ImageToUpload({
+    $core.List<$core.int>? image,
+    $core.String? name,
+  }) {
+    final _result = create();
+    if (image != null) {
+      _result.image = image;
+    }
+    if (name != null) {
+      _result.name = name;
+    }
+    return _result;
+  }
+  factory ImageToUpload.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory ImageToUpload.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  ImageToUpload clone() => ImageToUpload()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  ImageToUpload copyWith(void Function(ImageToUpload) updates) => super.copyWith((message) => updates(message as ImageToUpload)) as ImageToUpload; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static ImageToUpload create() => ImageToUpload._();
+  ImageToUpload createEmptyInstance() => create();
+  static $pb.PbList<ImageToUpload> createRepeated() => $pb.PbList<ImageToUpload>();
+  @$core.pragma('dart2js:noInline')
+  static ImageToUpload getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ImageToUpload>(create);
+  static ImageToUpload? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.List<$core.int> get image => $_getN(0);
+  @$pb.TagNumber(1)
+  set image($core.List<$core.int> v) { $_setBytes(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasImage() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearImage() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get name => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set name($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasName() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearName() => clearField(2);
+}
+
+class ImageLinks extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ImageLinks', createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'imageLinks')
+    ..hasRequiredFields = false
+  ;
+
+  ImageLinks._() : super();
+  factory ImageLinks({
+    $core.String? imageLinks,
+  }) {
+    final _result = create();
+    if (imageLinks != null) {
+      _result.imageLinks = imageLinks;
+    }
+    return _result;
+  }
+  factory ImageLinks.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory ImageLinks.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  ImageLinks clone() => ImageLinks()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  ImageLinks copyWith(void Function(ImageLinks) updates) => super.copyWith((message) => updates(message as ImageLinks)) as ImageLinks; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static ImageLinks create() => ImageLinks._();
+  ImageLinks createEmptyInstance() => create();
+  static $pb.PbList<ImageLinks> createRepeated() => $pb.PbList<ImageLinks>();
+  @$core.pragma('dart2js:noInline')
+  static ImageLinks getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ImageLinks>(create);
+  static ImageLinks? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get imageLinks => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set imageLinks($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasImageLinks() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearImageLinks() => clearField(1);
+}
+
 class ID extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ID', createEmptyInstance: create)
     ..a<$core.int>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id', $pb.PbFieldType.O3)
@@ -164,6 +272,7 @@ class Category extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Category', createEmptyInstance: create)
     ..a<$core.int>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id', $pb.PbFieldType.O3)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'name')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'imageLink')
     ..hasRequiredFields = false
   ;
 
@@ -171,6 +280,7 @@ class Category extends $pb.GeneratedMessage {
   factory Category({
     $core.int? id,
     $core.String? name,
+    $core.String? imageLink,
   }) {
     final _result = create();
     if (id != null) {
@@ -178,6 +288,9 @@ class Category extends $pb.GeneratedMessage {
     }
     if (name != null) {
       _result.name = name;
+    }
+    if (imageLink != null) {
+      _result.imageLink = imageLink;
     }
     return _result;
   }
@@ -219,6 +332,15 @@ class Category extends $pb.GeneratedMessage {
   $core.bool hasName() => $_has(1);
   @$pb.TagNumber(2)
   void clearName() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get imageLink => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set imageLink($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasImageLink() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearImageLink() => clearField(3);
 }
 
 class Products extends $pb.GeneratedMessage {
