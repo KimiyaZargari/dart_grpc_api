@@ -28,22 +28,13 @@ class EshopDatabase {
   }
 
   static Future<Category> addCategory(Category category) async {
-    print('adding category');
     final box = await database.openBox<Map>(categoryKey);
-    print('${box.name} opened');
     final categories = (await box.getAllValues()).values;
     if (categories.where((element) => element['2'] == category.name).isEmpty) {
       final categoryId = categories.isEmpty ? 1 : (categories.last['1'] + 1);
-      try {
-        await box.put((categoryId).toString(),
-            Category(id: categoryId, name: category.name).writeToJsonMap());
-        print('category added');
-
-        return category;
-      } catch (e) {
-        print(e);
-        throw e;
-      }
+      final createdCategory = Category(id: categoryId, name: category.name);
+      await box.put((categoryId).toString(), createdCategory.writeToJsonMap());
+      return createdCategory;
     } else {
       throw Exception('category already exists');
     }
@@ -80,7 +71,6 @@ class EshopDatabase {
           .values
           .map((e) => Category.fromJson(jsonEncode(e))));
     } catch (e) {
-      print(e);
       throw e;
     }
   }
