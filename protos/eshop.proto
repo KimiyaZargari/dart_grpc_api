@@ -17,19 +17,19 @@ service EshopService {
     rpc DeleteCategory (ID) returns (Empty);
 
     rpc GetProductsOfCategory (ID) returns (Products);
-    rpc UploadImages (stream ImageToUpload) returns (ImageLinks);
-
+    rpc UploadImage (stream AppImage) returns (ImageLink);
+    rpc LoadImage (ImageLink) returns (stream AppImage);
 }
 
 message Empty {}
 
 
-message ImageToUpload {
+message AppImage {
     bytes image = 1;
     string name = 2;
 }
-message ImageLinks {
-     string image_links = 1;
+message ImageLink {
+     string image_link = 1;
 }
 
 message ID {

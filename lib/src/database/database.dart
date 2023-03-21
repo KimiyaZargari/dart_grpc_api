@@ -66,13 +66,9 @@ class EshopDatabase {
 
   static Future<List<Category>> getAllCategories() async {
     final box = await database.openBox<Map>(categoryKey);
-    try {
-      return List<Category>.from((await box.getAllValues())
-          .values
-          .map((e) => Category.fromJson(jsonEncode(e))));
-    } catch (e) {
-      throw e;
-    }
+    return List<Category>.from((await box.getAllValues())
+        .values
+        .map((e) => Category.fromJson(jsonEncode(e))));
   }
 
   static Future<List<Product>> getAllProducts() async {

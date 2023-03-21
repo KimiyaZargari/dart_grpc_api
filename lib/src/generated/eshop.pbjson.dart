@@ -15,27 +15,27 @@ const Empty$json = const {
 
 /// Descriptor for `Empty`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List emptyDescriptor = $convert.base64Decode('CgVFbXB0eQ==');
-@$core.Deprecated('Use imageToUploadDescriptor instead')
-const ImageToUpload$json = const {
-  '1': 'ImageToUpload',
+@$core.Deprecated('Use appImageDescriptor instead')
+const AppImage$json = const {
+  '1': 'AppImage',
   '2': const [
     const {'1': 'image', '3': 1, '4': 1, '5': 12, '10': 'image'},
     const {'1': 'name', '3': 2, '4': 1, '5': 9, '10': 'name'},
   ],
 };
 
-/// Descriptor for `ImageToUpload`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List imageToUploadDescriptor = $convert.base64Decode('Cg1JbWFnZVRvVXBsb2FkEhQKBWltYWdlGAEgASgMUgVpbWFnZRISCgRuYW1lGAIgASgJUgRuYW1l');
-@$core.Deprecated('Use imageLinksDescriptor instead')
-const ImageLinks$json = const {
-  '1': 'ImageLinks',
+/// Descriptor for `AppImage`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List appImageDescriptor = $convert.base64Decode('CghBcHBJbWFnZRIUCgVpbWFnZRgBIAEoDFIFaW1hZ2USEgoEbmFtZRgCIAEoCVIEbmFtZQ==');
+@$core.Deprecated('Use imageLinkDescriptor instead')
+const ImageLink$json = const {
+  '1': 'ImageLink',
   '2': const [
-    const {'1': 'image_links', '3': 1, '4': 1, '5': 9, '10': 'imageLinks'},
+    const {'1': 'image_link', '3': 1, '4': 1, '5': 9, '10': 'imageLink'},
   ],
 };
 
-/// Descriptor for `ImageLinks`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List imageLinksDescriptor = $convert.base64Decode('CgpJbWFnZUxpbmtzEh8KC2ltYWdlX2xpbmtzGAEgASgJUgppbWFnZUxpbmtz');
+/// Descriptor for `ImageLink`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List imageLinkDescriptor = $convert.base64Decode('CglJbWFnZUxpbmsSHQoKaW1hZ2VfbGluaxgBIAEoCVIJaW1hZ2VMaW5r');
 @$core.Deprecated('Use iDDescriptor instead')
 const ID$json = const {
   '1': 'ID',

@@ -58,11 +58,14 @@ class EshopServiceClient extends $grpc.Client {
       '/EshopService/GetProductsOfCategory',
       ($0.ID value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.Products.fromBuffer(value));
-  static final _$uploadImages =
-      $grpc.ClientMethod<$0.ImageToUpload, $0.ImageLinks>(
-          '/EshopService/UploadImages',
-          ($0.ImageToUpload value) => value.writeToBuffer(),
-          ($core.List<$core.int> value) => $0.ImageLinks.fromBuffer(value));
+  static final _$uploadImage = $grpc.ClientMethod<$0.AppImage, $0.ImageLink>(
+      '/EshopService/UploadImage',
+      ($0.AppImage value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $0.ImageLink.fromBuffer(value));
+  static final _$loadImage = $grpc.ClientMethod<$0.ImageLink, $0.AppImage>(
+      '/EshopService/LoadImage',
+      ($0.ImageLink value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $0.AppImage.fromBuffer(value));
 
   EshopServiceClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -124,11 +127,18 @@ class EshopServiceClient extends $grpc.Client {
     return $createUnaryCall(_$getProductsOfCategory, request, options: options);
   }
 
-  $grpc.ResponseFuture<$0.ImageLinks> uploadImages(
-      $async.Stream<$0.ImageToUpload> request,
+  $grpc.ResponseFuture<$0.ImageLink> uploadImage(
+      $async.Stream<$0.AppImage> request,
       {$grpc.CallOptions? options}) {
-    return $createStreamingCall(_$uploadImages, request, options: options)
+    return $createStreamingCall(_$uploadImage, request, options: options)
         .single;
+  }
+
+  $grpc.ResponseStream<$0.AppImage> loadImage($0.ImageLink request,
+      {$grpc.CallOptions? options}) {
+    return $createStreamingCall(
+        _$loadImage, $async.Stream.fromIterable([request]),
+        options: options);
   }
 }
 
@@ -213,13 +223,20 @@ abstract class EshopServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.ID.fromBuffer(value),
         ($0.Products value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$0.ImageToUpload, $0.ImageLinks>(
-        'UploadImages',
-        uploadImages,
+    $addMethod($grpc.ServiceMethod<$0.AppImage, $0.ImageLink>(
+        'UploadImage',
+        uploadImage,
         true,
         false,
-        ($core.List<$core.int> value) => $0.ImageToUpload.fromBuffer(value),
-        ($0.ImageLinks value) => value.writeToBuffer()));
+        ($core.List<$core.int> value) => $0.AppImage.fromBuffer(value),
+        ($0.ImageLink value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.ImageLink, $0.AppImage>(
+        'LoadImage',
+        loadImage_Pre,
+        false,
+        true,
+        ($core.List<$core.int> value) => $0.ImageLink.fromBuffer(value),
+        ($0.AppImage value) => value.writeToBuffer()));
   }
 
   $async.Future<$0.Product> createProduct_Pre(
@@ -277,6 +294,11 @@ abstract class EshopServiceBase extends $grpc.Service {
     return getProductsOfCategory(call, await request);
   }
 
+  $async.Stream<$0.AppImage> loadImage_Pre(
+      $grpc.ServiceCall call, $async.Future<$0.ImageLink> request) async* {
+    yield* loadImage(call, await request);
+  }
+
   $async.Future<$0.Product> createProduct(
       $grpc.ServiceCall call, $0.Product request);
   $async.Future<$0.Category> createCategory(
@@ -295,6 +317,8 @@ abstract class EshopServiceBase extends $grpc.Service {
   $async.Future<$0.Empty> deleteCategory($grpc.ServiceCall call, $0.ID request);
   $async.Future<$0.Products> getProductsOfCategory(
       $grpc.ServiceCall call, $0.ID request);
-  $async.Future<$0.ImageLinks> uploadImages(
-      $grpc.ServiceCall call, $async.Stream<$0.ImageToUpload> request);
+  $async.Future<$0.ImageLink> uploadImage(
+      $grpc.ServiceCall call, $async.Stream<$0.AppImage> request);
+  $async.Stream<$0.AppImage> loadImage(
+      $grpc.ServiceCall call, $0.ImageLink request);
 }

@@ -6,6 +6,7 @@ import 'package:dart_grpc_api/src/services/category_service.dart';
 import 'package:dart_grpc_api/src/services/item_service.dart';
 import 'package:grpc/grpc.dart' as grpc;
 import 'package:grpc/src/server/call.dart';
+//import 'package:path_provider/path_provider.dart';
 
 class EshopService extends EshopServiceBase {
   final CategoryService categoryService = CategoryService();
@@ -67,8 +68,8 @@ class EshopService extends EshopServiceBase {
   }
 
   @override
-  Future<ImageLinks> uploadImages(
-      grpc.ServiceCall call, Stream<ImageToUpload> request) async {
+  Future<ImageLink> uploadImage(
+      grpc.ServiceCall call, Stream<AppImage> request) async {
     final List<int> image = [];
     String? name;
     await for (var element in request) {
@@ -77,14 +78,27 @@ class EshopService extends EshopServiceBase {
       }
       image.addAll(element.image);
     }
-
-    File imageFile = File(name ?? 'image');
+    File imageFile = File('lib\\src\\database\\images\\' + (name ?? 'image'));
     await imageFile.writeAsBytes(image);
+    return ImageLink(imageLink: name ?? 'image');
+  }
 
-    //   // links.add(filePath);
-    // });
-    //
-    return ImageLinks(imageLinks: name);
+  @override
+  Stream<AppImage> loadImage(grpc.ServiceCall call, ImageLink request) async* {
+    File imageFile = File('lib\\src\\database\\images\\' + (request.imageLink));
+
+    final imageBytes = await imageFile.readAsBytes();
+
+    int index = 0;
+    while (index < imageBytes.length) {
+      int lastIndex = index + 128;
+      if (lastIndex > imageBytes.length) lastIndex = imageBytes.length;
+      final data = AppImage(
+        image: imageBytes.sublist(index, lastIndex),
+      );
+      yield data;
+      index = lastIndex;
+    }
   }
 }
 
