@@ -2,20 +2,14 @@ import 'dart:io';
 
 import 'package:dart_grpc_api/src/database/database.dart';
 import 'package:dart_grpc_api/src/generated/eshop.pbgrpc.dart';
-import 'package:dart_grpc_api/src/services/category_service.dart';
-import 'package:dart_grpc_api/src/services/item_service.dart';
+import 'package:dart_grpc_api/src/services/images_service.dart';
+import 'package:dart_grpc_api/src/services/product_service.dart';
 import 'package:grpc/grpc.dart' as grpc;
 import 'package:grpc/src/server/call.dart';
-//import 'package:path_provider/path_provider.dart';
 
 class EshopService extends EshopServiceBase {
-  final CategoryService categoryService = CategoryService();
   final ProductService productService = ProductService();
-
-  @override
-  Future<Category> createCategory(ServiceCall call, Category request) async {
-    return categoryService.createCategory(request);
-  }
+  final ImageService imageService = ImageService();
 
   @override
   Future<Product> createProduct(ServiceCall call, Product request) async {
@@ -23,23 +17,8 @@ class EshopService extends EshopServiceBase {
   }
 
   @override
-  Future<Empty> deleteCategory(ServiceCall call, ID request) async {
-    return categoryService.deleteCategory(request.id);
-  }
-
-  @override
-  Future<Empty> deleteProduct(ServiceCall call, ID request) async {
+  Future<Empty> deleteProduct(ServiceCall call, Id request) async {
     return productService.deleteProduct(request.id);
-  }
-
-  @override
-  Future<Products> getProductsOfCategory(ServiceCall call, ID request) async {
-    return productService.getProductsOfCategory(request.id);
-  }
-
-  @override
-  Future<Category> editCategory(ServiceCall call, Category request) async {
-    return categoryService.editCategory(request);
   }
 
   @override
@@ -48,57 +27,19 @@ class EshopService extends EshopServiceBase {
   }
 
   @override
-  Future<Categories> getAllCategories(ServiceCall call, Empty request) async {
-    return categoryService.getAllCategories();
-  }
-
-  @override
   Future<Products> getAllProducts(ServiceCall call, Empty request) async {
-    return productService.getAllProducts();
-  }
-
-  @override
-  Future<Category> getCategory(ServiceCall call, ID request) async {
-    return categoryService.getCategory(request.id);
-  }
-
-  @override
-  Future<Product> getProduct(ServiceCall call, ID request) async {
-    return productService.getProduct(request.id);
+    return productService.getProducts(Empty);
   }
 
   @override
   Future<ImageLink> uploadImage(
       grpc.ServiceCall call, Stream<AppImage> request) async {
-    final List<int> image = [];
-    String? name;
-    await for (var element in request) {
-      if (element.name.isNotEmpty) {
-        name = element.name;
-      }
-      image.addAll(element.image);
-    }
-    File imageFile = File('lib\\src\\database\\images\\' + (name ?? 'image'));
-    await imageFile.writeAsBytes(image);
-    return ImageLink(imageLink: name ?? 'image');
+    return await imageService.uploadImage(request);
   }
 
   @override
   Stream<AppImage> loadImage(grpc.ServiceCall call, ImageLink request) async* {
-    File imageFile = File('lib\\src\\database\\images\\' + (request.imageLink));
-
-    final imageBytes = await imageFile.readAsBytes();
-
-    int index = 0;
-    while (index < imageBytes.length) {
-      int lastIndex = index + 128;
-      if (lastIndex > imageBytes.length) lastIndex = imageBytes.length;
-      final data = AppImage(
-        image: imageBytes.sublist(index, lastIndex),
-      );
-      yield data;
-      index = lastIndex;
-    }
+    yield* imageService.loadImage(request.link);
   }
 }
 

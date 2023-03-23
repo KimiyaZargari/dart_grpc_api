@@ -1,24 +1,18 @@
 syntax = "proto3";
 
 service EshopService {
-    rpc CreateProduct (Product) returns (Product) {}
-    rpc CreateCategory (Category) returns (Category);
+    rpc CreateProduct (Product) returns (Product);
 
     rpc GetAllProducts (Empty) returns (Products);
-    rpc GetAllCategories (Empty) returns (Categories);
-
-    rpc GetProduct (ID) returns (Product);
-    rpc GetCategory (ID) returns (Category);
 
     rpc EditProduct (Product) returns (Product);
-    rpc EditCategory (Category) returns (Category);
 
-    rpc DeleteProduct (ID) returns (Empty);
-    rpc DeleteCategory (ID) returns (Empty);
+    rpc DeleteProduct (Id) returns (Empty);
 
-    rpc GetProductsOfCategory (ID) returns (Products);
     rpc UploadImage (stream AppImage) returns (ImageLink);
+
     rpc LoadImage (ImageLink) returns (stream AppImage);
+
 }
 
 message Empty {}
@@ -28,32 +22,22 @@ message AppImage {
     bytes image = 1;
     string name = 2;
 }
+
 message ImageLink {
-     string image_link = 1;
+    string link = 1;
 }
 
-message ID {
+message Id {
     int32 id = 1;
 }
-
 message Product {
     int32 id = 1;
     string name = 2;
-    int32 category_id = 3;
+    string image = 3;
+    double price = 4;
+    double discount = 5;
+    string description = 6;
 }
-
-message Category {
-    optional int32 id = 1;
-    string name = 2;
-    optional string image_link = 3;
-}
-
 message Products {
     repeated Product products = 1;
 }
-
-message Categories {
-    repeated Category categories = 1;
-}
-
-

@@ -101,17 +101,17 @@ class AppImage extends $pb.GeneratedMessage {
 
 class ImageLink extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ImageLink', createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'imageLink')
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'link')
     ..hasRequiredFields = false
   ;
 
   ImageLink._() : super();
   factory ImageLink({
-    $core.String? imageLink,
+    $core.String? link,
   }) {
     final _result = create();
-    if (imageLink != null) {
-      _result.imageLink = imageLink;
+    if (link != null) {
+      _result.link = link;
     }
     return _result;
   }
@@ -137,23 +137,23 @@ class ImageLink extends $pb.GeneratedMessage {
   static ImageLink? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get imageLink => $_getSZ(0);
+  $core.String get link => $_getSZ(0);
   @$pb.TagNumber(1)
-  set imageLink($core.String v) { $_setString(0, v); }
+  set link($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasImageLink() => $_has(0);
+  $core.bool hasLink() => $_has(0);
   @$pb.TagNumber(1)
-  void clearImageLink() => clearField(1);
+  void clearLink() => clearField(1);
 }
 
-class ID extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ID', createEmptyInstance: create)
+class Id extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Id', createEmptyInstance: create)
     ..a<$core.int>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id', $pb.PbFieldType.O3)
     ..hasRequiredFields = false
   ;
 
-  ID._() : super();
-  factory ID({
+  Id._() : super();
+  factory Id({
     $core.int? id,
   }) {
     final _result = create();
@@ -162,26 +162,26 @@ class ID extends $pb.GeneratedMessage {
     }
     return _result;
   }
-  factory ID.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory ID.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  factory Id.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory Id.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  ID clone() => ID()..mergeFromMessage(this);
+  Id clone() => Id()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  ID copyWith(void Function(ID) updates) => super.copyWith((message) => updates(message as ID)) as ID; // ignore: deprecated_member_use
+  Id copyWith(void Function(Id) updates) => super.copyWith((message) => updates(message as Id)) as Id; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
-  static ID create() => ID._();
-  ID createEmptyInstance() => create();
-  static $pb.PbList<ID> createRepeated() => $pb.PbList<ID>();
+  static Id create() => Id._();
+  Id createEmptyInstance() => create();
+  static $pb.PbList<Id> createRepeated() => $pb.PbList<Id>();
   @$core.pragma('dart2js:noInline')
-  static ID getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ID>(create);
-  static ID? _defaultInstance;
+  static Id getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Id>(create);
+  static Id? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.int get id => $_getIZ(0);
@@ -197,7 +197,10 @@ class Product extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Product', createEmptyInstance: create)
     ..a<$core.int>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id', $pb.PbFieldType.O3)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'name')
-    ..a<$core.int>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'categoryId', $pb.PbFieldType.O3)
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'image')
+    ..a<$core.double>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'price', $pb.PbFieldType.OD)
+    ..a<$core.double>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'discount', $pb.PbFieldType.OD)
+    ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'description')
     ..hasRequiredFields = false
   ;
 
@@ -205,7 +208,10 @@ class Product extends $pb.GeneratedMessage {
   factory Product({
     $core.int? id,
     $core.String? name,
-    $core.int? categoryId,
+    $core.String? image,
+    $core.double? price,
+    $core.double? discount,
+    $core.String? description,
   }) {
     final _result = create();
     if (id != null) {
@@ -214,8 +220,17 @@ class Product extends $pb.GeneratedMessage {
     if (name != null) {
       _result.name = name;
     }
-    if (categoryId != null) {
-      _result.categoryId = categoryId;
+    if (image != null) {
+      _result.image = image;
+    }
+    if (price != null) {
+      _result.price = price;
+    }
+    if (discount != null) {
+      _result.discount = discount;
+    }
+    if (description != null) {
+      _result.description = description;
     }
     return _result;
   }
@@ -259,88 +274,40 @@ class Product extends $pb.GeneratedMessage {
   void clearName() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.int get categoryId => $_getIZ(2);
+  $core.String get image => $_getSZ(2);
   @$pb.TagNumber(3)
-  set categoryId($core.int v) { $_setSignedInt32(2, v); }
+  set image($core.String v) { $_setString(2, v); }
   @$pb.TagNumber(3)
-  $core.bool hasCategoryId() => $_has(2);
+  $core.bool hasImage() => $_has(2);
   @$pb.TagNumber(3)
-  void clearCategoryId() => clearField(3);
-}
+  void clearImage() => clearField(3);
 
-class Category extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Category', createEmptyInstance: create)
-    ..a<$core.int>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id', $pb.PbFieldType.O3)
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'name')
-    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'imageLink')
-    ..hasRequiredFields = false
-  ;
+  @$pb.TagNumber(4)
+  $core.double get price => $_getN(3);
+  @$pb.TagNumber(4)
+  set price($core.double v) { $_setDouble(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasPrice() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearPrice() => clearField(4);
 
-  Category._() : super();
-  factory Category({
-    $core.int? id,
-    $core.String? name,
-    $core.String? imageLink,
-  }) {
-    final _result = create();
-    if (id != null) {
-      _result.id = id;
-    }
-    if (name != null) {
-      _result.name = name;
-    }
-    if (imageLink != null) {
-      _result.imageLink = imageLink;
-    }
-    return _result;
-  }
-  factory Category.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory Category.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  Category clone() => Category()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  Category copyWith(void Function(Category) updates) => super.copyWith((message) => updates(message as Category)) as Category; // ignore: deprecated_member_use
-  $pb.BuilderInfo get info_ => _i;
-  @$core.pragma('dart2js:noInline')
-  static Category create() => Category._();
-  Category createEmptyInstance() => create();
-  static $pb.PbList<Category> createRepeated() => $pb.PbList<Category>();
-  @$core.pragma('dart2js:noInline')
-  static Category getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Category>(create);
-  static Category? _defaultInstance;
+  @$pb.TagNumber(5)
+  $core.double get discount => $_getN(4);
+  @$pb.TagNumber(5)
+  set discount($core.double v) { $_setDouble(4, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasDiscount() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearDiscount() => clearField(5);
 
-  @$pb.TagNumber(1)
-  $core.int get id => $_getIZ(0);
-  @$pb.TagNumber(1)
-  set id($core.int v) { $_setSignedInt32(0, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasId() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearId() => clearField(1);
-
-  @$pb.TagNumber(2)
-  $core.String get name => $_getSZ(1);
-  @$pb.TagNumber(2)
-  set name($core.String v) { $_setString(1, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasName() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearName() => clearField(2);
-
-  @$pb.TagNumber(3)
-  $core.String get imageLink => $_getSZ(2);
-  @$pb.TagNumber(3)
-  set imageLink($core.String v) { $_setString(2, v); }
-  @$pb.TagNumber(3)
-  $core.bool hasImageLink() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearImageLink() => clearField(3);
+  @$pb.TagNumber(6)
+  $core.String get description => $_getSZ(5);
+  @$pb.TagNumber(6)
+  set description($core.String v) { $_setString(5, v); }
+  @$pb.TagNumber(6)
+  $core.bool hasDescription() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearDescription() => clearField(6);
 }
 
 class Products extends $pb.GeneratedMessage {
@@ -382,46 +349,5 @@ class Products extends $pb.GeneratedMessage {
 
   @$pb.TagNumber(1)
   $core.List<Product> get products => $_getList(0);
-}
-
-class Categories extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Categories', createEmptyInstance: create)
-    ..pc<Category>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'categories', $pb.PbFieldType.PM, subBuilder: Category.create)
-    ..hasRequiredFields = false
-  ;
-
-  Categories._() : super();
-  factory Categories({
-    $core.Iterable<Category>? categories,
-  }) {
-    final _result = create();
-    if (categories != null) {
-      _result.categories.addAll(categories);
-    }
-    return _result;
-  }
-  factory Categories.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory Categories.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  Categories clone() => Categories()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  Categories copyWith(void Function(Categories) updates) => super.copyWith((message) => updates(message as Categories)) as Categories; // ignore: deprecated_member_use
-  $pb.BuilderInfo get info_ => _i;
-  @$core.pragma('dart2js:noInline')
-  static Categories create() => Categories._();
-  Categories createEmptyInstance() => create();
-  static $pb.PbList<Categories> createRepeated() => $pb.PbList<Categories>();
-  @$core.pragma('dart2js:noInline')
-  static Categories getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Categories>(create);
-  static Categories? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.List<Category> get categories => $_getList(0);
 }
 
